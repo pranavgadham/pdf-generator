@@ -1,0 +1,43 @@
+<div style="width: 100vw; height: 94vh; display: flex; justify-content: center; align-items: center;">
+  <div style="width: 40vw;">
+    <h1>Trip Details</h1>
+    <form action="/handleTripDetails" method="POST">
+      <!-- Trip Title -->
+      <div class="mb-3">
+        <label for="tripTitle" class="form-label">Enter the Trip Title</label>
+        <input type="text" class="form-control" id="tripTitle" name="tripTitle" placeholder="Trip Title" required />
+      </div>
+
+      <!-- Trip Start Date -->
+      <div class="mb-3">
+        <label for="tripStartDate" class="form-label">Trip Start Date</label>
+        <input type="date" class="form-control" id="tripStartDate" name="tripStartDate" required />
+      </div>
+
+      <!-- Trip End Date -->
+      <div class="mb-3">
+        <label for="tripEndDate" class="form-label">Trip End Date</label>
+        <input type="date" class="form-control" id="tripEndDate" name="tripEndDate" required />
+      </div>
+
+      <!-- Places Heading -->
+      <h3>Places</h3>
+
+      <!-- Multiple Checkboxes for Places -->
+      <div class="mb-3">
+        <% data.forEach((place, index)=> { %>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="place<%= index %>" name="tripPlaces"
+              value="<%= place.place %>" />
+            <label class="form-check-label" for="place<%= index %>">
+              <%= place.place %>
+            </label>
+          </div>
+          <% }) %>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+</div>
